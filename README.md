@@ -1,5 +1,6 @@
 # sensors
 SHTC3_1: September 2018
+
 Demo code to read and display humidity and temperature data from Sensirion SHTC3 using MSP430F5529 Launchpad.
 Low-level I2C communication using registers, interrupts, and low-power modes.
 Read sensor in low-power mode with clock stretching.  Display data on terminal program.
