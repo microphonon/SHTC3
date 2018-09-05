@@ -65,7 +65,7 @@ void main(void) {
     	Measure();	//Get raw humidity and temperature data from sensor
     	Sleep();	//Measurement done; put sensor to sleep
 
-       	UCB0IE &= ~(UCRXIE + UCTXIE); //Disable I2C interrupts
+ 	UCB0IE &= ~(UCRXIE + UCTXIE); //Disable I2C interrupts
     	//Ignore the 2 CRC bytes in *(PRxData+3) and *PRxData
   	//Process 16-bit raw humidity data
     	H = ((uint32_t)(*(PRxData+5)) << 8)|(uint32_t)*(PRxData+4);
