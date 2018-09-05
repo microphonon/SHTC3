@@ -14,3 +14,5 @@ P3.3  UART TXD
 
 P3.4  UART RXD
 
+Digi-Key video describing the SHTC3: https://www.youtube.com/watch?v=X7GWMmYFZ9I
+
