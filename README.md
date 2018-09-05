@@ -14,7 +14,7 @@ P3.3  UART TXD
 
 P3.4  UART RXD
 
-Sensirion product page: https://www.sensirion.com/en/environmental-sensors/humidity-sensors/digital-humidity-sensor-shtc3-our-new-standard-for-consumer-electronics/
+Sensirion product page: https://www.sensirion.com/shtc3
 
 Digi-Key video: https://www.youtube.com/watch?v=X7GWMmYFZ9I
 
