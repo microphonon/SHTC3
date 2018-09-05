@@ -66,8 +66,8 @@ void main(void) {
     	Sleep();	//Measurement done; put sensor to sleep
 
        	UCB0IE &= ~(UCRXIE + UCTXIE); //Disable I2C interrupts
-       	//Ignore the 2 CRC bytes in *(PRxData+3) and *PRxData
-    	//Process 16-bit raw humidity data
+    	//Ignore the 2 CRC bytes in *(PRxData+3) and *PRxData
+  	//Process 16-bit raw humidity data
     	H = ((uint32_t)(*(PRxData+5)) << 8)|(uint32_t)*(PRxData+4);
     	//Convert humidity data with 4 significant figures
     	RH = ((H<<13) + (H<<11) - (H<<8) + (H<<4)) >> 16; //Corrected humidity without decimal point
