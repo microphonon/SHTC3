@@ -14,8 +14,6 @@ P3.0  SDA with 10k pullup
 P3.1  SCL with 10k pullup
 P3.3  TXD
 P3.4  RXD
-
-September 2018
  */
 # define PERIOD 10000 //Samping period. 10000 count is approximately 1 second; maximum is 65535
 
@@ -80,7 +78,8 @@ void main(void) {
     	//TC = (((T<<7) + (T<<5) + (T<<4) - 0x01) >> 16) - 0x2D;
 
     	//Display data on terminal
-    	sprintf(str,"%s %lu.%.2lu%s %lu.%.1lu%s", "Rel Humidity:", (int32_t)(RH/100),(int32_t)(RH%100),"% Temp:", (int32_t)(TC/10),(int32_t)(RH%10),"C\r\n");
+    	sprintf(str,"%s %lu.%.2lu%s %lu.%.1lu%s", "Rel Humidity:", (int32_t)(RH/100),(int32_t)(RH%100),
+		"% Temp:", (int32_t)(TC/10),(int32_t)(RH%10),"C\r\n");
     	count = sizeof str;
     	for (i=0; i < count; i++)
     		{
@@ -141,44 +140,43 @@ __interrupt void USCI_B0_ISR(void)
  void SetPins(void)
   {
  	 /* Port 1
- 	  * P1.0 Red LED
- 	    */
- 	    P1DIR |= BIT0 + BIT1 + BIT2 + BIT3 + BIT4 + BIT5 + BIT6 + BIT7;
- 	    P1OUT &= ~BIT0; //LED off
+ 	  P1.0 Red LED
+ 	  */
+ 	P1DIR |= BIT0 + BIT1 + BIT2 + BIT3 + BIT4 + BIT5 + BIT6 + BIT7;
+ 	P1OUT &= ~BIT0; //LED off
 
- 	    /* Port 2
+ 	/* Port 2
  	    P2.1  Button on Launchpad
- 		*/
- 	   	P2DIR |= BIT0 + BIT1 + BIT2 + BIT3 + BIT4 + BIT5 + BIT6 + BIT7;
+ 	*/
+ 	P2DIR |= BIT0 + BIT1 + BIT2 + BIT3 + BIT4 + BIT5 + BIT6 + BIT7;
 
- 	    /* Port 3 */
- 	   	/*
- 	   	 * P3.0  SDA
- 	   	 * P3.1  SCL
- 	   	 * P3.3	 TXD
- 	   	 * P3.4  RXD
- 	   	 */
- 	    P3SEL |=  BIT0 + BIT1 + BIT3 + BIT4; //Set the I2C and UART lines
- 	    P3DIR |= BIT2 + BIT5 + BIT6 + BIT7;
+ 	/* Port 3 
+ 	   P3.0  SDA
+ 	   P3.1  SCL
+ 	   P3.3	 TXD
+ 	   P3.4  RXD
+	*/
+ 	P3SEL |=  BIT0 + BIT1 + BIT3 + BIT4; //Set the I2C and UART lines
+ 	P3DIR |= BIT2 + BIT5 + BIT6 + BIT7;
 
- 	    /* Port 4
- 	   		P4.1 -- 4.6 unused
- 	   		P4.7 Green LED
- 	   		*/
- 	   	    P4DIR |= BIT0 + BIT1 + BIT2 + BIT3 + BIT4 + BIT5 + BIT6 + BIT7;
- 	   	    P4OUT &= ~BIT7; //Green LED off
+ 	/* Port 4
+ 	   P4.1 -- 4.6 unused
+ 	   P4.7 Green LED
+ 	*/
+ 	P4DIR |= BIT0 + BIT1 + BIT2 + BIT3 + BIT4 + BIT5 + BIT6 + BIT7;
+ 	P4OUT &= ~BIT7; //Green LED off
 
- 	   	 /* Port 5
- 	   	    P5.0 Unused
- 	   	    P5.1 Unused
- 	   	    P5.2--P5.5 grounded or open as per spec sheet
- 	   	  */
- 	   	 P5DIR |= BIT0 + BIT1 + BIT2 + BIT3 + BIT4 + BIT5 + BIT6 + BIT7;
+ 	/* Port 5
+ 	   P5.0 Unused
+ 	   P5.1 Unused
+ 	   P5.2--P5.5 grounded or open as per spec sheet
+ 	*/
+ 	P5DIR |= BIT0 + BIT1 + BIT2 + BIT3 + BIT4 + BIT5 + BIT6 + BIT7;
 
- 	   	/* Port 6
- 	   	P6.0--6.7 unused
- 	   	*/
- 	   	P6DIR |= BIT0 + BIT1 + BIT2 + BIT3 + BIT4 + BIT5 + BIT6 + BIT7;
+ 	 /* Port 6
+ 	   P6.0--6.7 unused
+ 	 */
+ 	P6DIR |= BIT0 + BIT1 + BIT2 + BIT3 + BIT4 + BIT5 + BIT6 + BIT7;
   }
 
  void SetVLO(void)
@@ -188,8 +186,8 @@ __interrupt void USCI_B0_ISR(void)
 
  void SetTimer(void)
      {
- 	 	TA0CCTL0 |= CCIE;  //Enable timer interrupt
- 	 	TA0CTL = TASSEL_1 | MC_1;  //Set Timer A to ACLK; MC_1 to count up to TA0CCR0.
+ 	TA0CCTL0 |= CCIE;  //Enable timer interrupt
+ 	TA0CTL = TASSEL_1 | MC_1;  //Set Timer A to ACLK; MC_1 to count up to TA0CCR0.
      }
 
  void SetUART(void) //Do simple polling instead of interrupts
@@ -205,7 +203,7 @@ __interrupt void USCI_B0_ISR(void)
  void SetI2C(void)
    {
   	 // Configure the USCI B0 module for I2C at 100 kHz
-	 	 UCB0CTL1 |= UCSWRST;
+	     UCB0CTL1 |= UCSWRST;
   	     UCB0CTL0 |= UCMST + UCSYNC + UCMODE_3; //Set as master, synchronous, UCMODE_3 for I2C
   	     UCB0CTL1 = UCSSEL_2 + UCSWRST;  //Select SMCLK
   	     UCB0BR0 = 12; 	//Next 2 lines set SMCLK to 100 kHz
@@ -239,18 +237,18 @@ __interrupt void USCI_B0_ISR(void)
 
  void Measure(void)
  {
-	 	 const uint8_t ReadSensor[] = {0x44,0xDE};  //Read sensor in low power mode with clock stretching
-	     UCB0CTL1 |= UCTR;  //Set as transmitter
-	     PTxData = (uint8_t *)ReadSensor;      // TX array start address
-	     TXByteCtr = 2;              // Load TX byte counter
-	     UCB0CTL1 |= UCTXSTT;   // Start condition
-	     LPM0;                   // Remain in LPM0 until all data transmitted
-	     while (UCB0CTL1 & UCTXSTP);  // Ensure stop condition got sent
-	     //Receive 6 data bytes
-	     UCB0CTL1 &= ~UCTR; //Set as receiver
-	     PRxData = (uint8_t *)RxBuffer;    // Start of RX buffer
-	     RXByteCtr = 6;  // 2 humidity + CRC + 2 temp + CRC
-	     UCB0CTL1 |= UCTXSTT; // I2C start condition
-	     LPM0;
+	const uint8_t ReadSensor[] = {0x44,0xDE};  //Read sensor in low power mode with clock stretching
+	UCB0CTL1 |= UCTR;  //Set as transmitter
+	PTxData = (uint8_t *)ReadSensor;      // TX array start address
+	TXByteCtr = 2;              // Load TX byte counter
+	UCB0CTL1 |= UCTXSTT;   // Start condition
+	LPM0;                   // Remain in LPM0 until all data transmitted
+	while (UCB0CTL1 & UCTXSTP);  // Ensure stop condition got sent
+	//Receive 6 data bytes
+	UCB0CTL1 &= ~UCTR; //Set as receiver
+	PRxData = (uint8_t *)RxBuffer;    // Start of RX buffer
+	RXByteCtr = 6;  // 2 humidity + CRC + 2 temp + CRC
+	UCB0CTL1 |= UCTXSTT; // I2C start condition
+	LPM0;
  }
 
