@@ -36,7 +36,6 @@ volatile uint8_t RxBuffer[6];   // Allocate 6 bytes of RAM for data
 //Variables for UART terminal display
 char str[80];
 volatile uint32_t H, RH, T, TC;
-
 volatile uint8_t i, count;
 
 void main(void) {
@@ -83,9 +82,9 @@ void main(void) {
     	count = sizeof str;
     	for (i=0; i < count; i++)
     		{
-    	     	 while (!(UCA0IFG & UCTXIFG)); //Poll serial: USCI_A0 TX buffer ready?
-    	     	 UCA0TXBUF = str[i]; //Send data 1 byte at a time
-    	     }
+    		while (!(UCA0IFG & UCTXIFG)); //Poll serial: USCI_A0 TX buffer ready?
+    	     	UCA0TXBUF = str[i]; //Send data 1 byte at a time
+    		}
     	P4OUT &= ~BIT7; //Turn off green LED
     	}
 }
