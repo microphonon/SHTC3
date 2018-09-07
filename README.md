@@ -1,6 +1,6 @@
 # SHTC3
 Demo code to read and display humidity and temperature data from Sensirion SHTC3 using MSP430F5529 Launchpad.
-Low-level I2C communication using registers, interrupts, and low-power modes.
+Low-level I2C communication using UCB0 registers, interrupts, and low-power modes.
 Read sensor in low-power mode with clock stretching.  Display data on terminal program.
 Humidity displayed with 4 significant figures; temperature 3 significant figures.
 Main loop runs with timed interrupt from LPM3 and VLO clock. I2C clock 100 kHz; UART 9600 baud.
