@@ -65,12 +65,12 @@ void main(void) {
  	UCB0IE &= ~(UCRXIE + UCTXIE); //Disable I2C interrupts
     	//Ignore the 2 CRC bytes in *(PRxData+3) and *PRxData
   	//Process 16-bit raw humidity data
-    	H = ((uint32_t)(*(PRxData+5)) << 8)|(uint32_t)*(PRxData+4);
+    	H = ((uint16_t)(*(PRxData+5)) << 8)|(uint16_t)*(PRxData+4);
     	//Convert humidity data with 4 significant figures
     	RH = ((H<<13) + (H<<11) - (H<<8) + (H<<4)) >> 16; //Corrected humidity without decimal point
 
     	//Process 16-bit raw temperature data
-    	T = ((uint32_t)(*(PRxData+2)) << 8)|(uint32_t)*(PRxData+1);
+    	T = ((uint16_t)(*(PRxData+2)) << 8)|(uint16_t)*(PRxData+1);
     	//Convert temperature data with 3 significant figures
     	TC = (((T<<11) - (T<<8) - (T<<5) - (T<<3) - (T<<1)) >> 16) - 0x1C2; //No decimal point
     	//Convert temperature data with 2 significant figures
