@@ -7,12 +7,9 @@ Main loop runs with timed interrupt from LPM3 and VLO clock. I2C clock 100 kHz; 
 IDE with CCS 6.1.3 and nofloat printf support. The following terminals are used:
 
 P3.0  SDA with 10k pullup
-
-P3.1  SCL with 10k pullup
-
-P3.3  UART TXD
-
-P3.4  UART RXD
+<br>P3.1  SCL with 10k pullup
+<br>P3.3  UART TXD
+<br>P3.4  UART RXD
 
 Sensirion product page: https://www.sensirion.com/shtc3
 
