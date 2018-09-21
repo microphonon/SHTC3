@@ -15,3 +15,5 @@ Sensirion product page: https://www.sensirion.com/shtc3
 
 Digi-Key video: https://www.youtube.com/watch?v=X7GWMmYFZ9I
 
+![shtc3](https://user-images.githubusercontent.com/25041061/45910425-2a8f2a80-bdc6-11e8-8203-dcc1a3046595.png)
+
