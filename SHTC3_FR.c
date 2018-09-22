@@ -104,10 +104,10 @@ __interrupt void USCI_B0_ISR(void)
 {
 	switch(__even_in_range(UCB0IV,30))
 	{
-		case 0:	break;         // Vector 0: No interrupts
+            case 0: break;         // Vector 0: No interrupts
 	    case 2: break;         // Vector 2: ALIFG
-	    case 4:	break;          // Vector 4: NACKIFG
-	    case 6:	break;         // Vector 6: STTIFG
+	    case 4: break;          // Vector 4: NACKIFG
+	    case 6: break;         // Vector 6: STTIFG
 	    case 8: break;         // Vector 8: STPIFG
 	    case 10: break;         // Vector 10: RXIFG3
 	    case 12: break;         // Vector 12: TXIFG3
@@ -142,7 +142,7 @@ __interrupt void USCI_B0_ISR(void)
 	   	    		LPM0_EXIT; 					// Exit LPM0
 	   	    	}
 	   	    break;
-	    case 26:  break;        // Vector 26: BCNTIFG
+	    case 26: break;        // Vector 26: BCNTIFG
 	    case 28: break;         // Vector 28: clock low timeout
 	    case 30: break;         // Vector 30: 9th bit
 	    default: break;
@@ -151,33 +151,33 @@ __interrupt void USCI_B0_ISR(void)
 
  void SetPins(void)
   {
-	 	PM5CTL0 &= ~LOCKLPM5; //Unlocks GPIO pins at power-up
+	 PM5CTL0 &= ~LOCKLPM5; //Unlocks GPIO pins at power-up
  	 /* Port 1
- 	  	P1.0 Green LED
- 	  	P1.1 Launchpad switch
+ 	    P1.0 Green LED
+ 	    P1.1 Launchpad switch
  	    P1.6 SDA I2C
  	    P1.7 SCL I2C
- 	    */
- 	    P1DIR |= BIT0 + BIT1 + BIT2 + BIT3 + BIT4 + BIT5;
- 	    P1SEL1 |= BIT6 + BIT7; //Setup I2C on UCB0
- 	    P1OUT &= ~BIT0; //LED off
+ 	  */
+ 	  P1DIR |= BIT0 + BIT1 + BIT2 + BIT3 + BIT4 + BIT5;
+ 	  P1SEL1 |= BIT6 + BIT7; //Setup I2C on UCB0
+ 	  P1OUT &= ~BIT0; //LED off
 
- 	    /* Port 2
- 	    P2.1  Button on Launchpad
- 	    P2.5 TXD UART
- 	    P2.6 RXD UART
- 		*/
- 	   	P2DIR |= BIT0 + BIT1 + BIT2 + BIT3 + BIT4 + BIT7;
- 	    P2SEL1 |= BIT5 + BIT6; //Setup UART on UCA1
+	/* Port 2
+ 	   P2.1  Button on Launchpad
+ 	   P2.5 TXD UART
+ 	   P2.6 RXD UART
+ 	*/
+	P2DIR |= BIT0 + BIT1 + BIT2 + BIT3 + BIT4 + BIT7;
+ 	P2SEL1 |= BIT5 + BIT6; //Setup UART on UCA1
 
- 	    /* Port 3 */
- 	    P3DIR |=  BIT0 + BIT1 + BIT3 + BIT4 + BIT5 + BIT6 + BIT7;
+	/* Port 3 */
+ 	P3DIR |=  BIT0 + BIT1 + BIT3 + BIT4 + BIT5 + BIT6 + BIT7;
 
- 	    /* Port 4
- 	   	P4.6 Red LED
- 	   	*/
- 	    P4DIR |= BIT0 + BIT1 + BIT2 + BIT3 + BIT4 + BIT5 + BIT6 + BIT7;
- 	    P4OUT &= ~BIT6; //LED off
+	/* Port 4
+ 	P4.6 Red LED
+ 	*/
+ 	P4DIR |= BIT0 + BIT1 + BIT2 + BIT3 + BIT4 + BIT5 + BIT6 + BIT7;
+ 	P4OUT &= ~BIT6; //LED off
   }
 
  void SetVLO(void)
