@@ -78,7 +78,7 @@ void main(void) {
 
     	//Display data on terminal
     	sprintf(str,"%s %lu.%.2lu%s %lu.%.1lu%s", "Rel Humidity:", (int32_t)(RH/100),(int32_t)(RH%100),
-		"% Temp:", (int32_t)(TC/10),(int32_t)(RH%10),"C\r\n");
+		"% Temp:", (int32_t)(TC/10),(int32_t)(TC%10),"C\r\n");
     	count = sizeof str;
     	for (i=0; i < count; i++)
     		{
