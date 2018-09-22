@@ -12,8 +12,8 @@ IDE with CCS 6.1.3 and nofloat printf support.
 
 P1.6  UCB0SDA with 10k pullup
 P1.7  UCB0SCL with 10k pullup
-P2.6  UCA1TXD
-P2.5  UCA1RXD
+P2.5  UCA1TXD
+P2.6  UCA1RXD
 
 September 2018
  */
