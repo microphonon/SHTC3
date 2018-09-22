@@ -14,8 +14,8 @@ IDE with CCS 6.1.3 and nofloat printf support.
 <p><b>SHTC3_FR.c</b>  Code for MSP430FR59xx MCUs. Launchpad terminals:
 <br>P1.6  UCB0SDA with 10k pullup
 <br>P1.7  UCB0SCL with 10k pullup
-<br>P2.6  UCA1TXD
-<br>P2.5  UCA1RXD
+<br>P2.5  UCA1TXD
+<br>P2.6  UCA1RXD
 
 Sensirion product page: https://www.sensirion.com/shtc3
 
