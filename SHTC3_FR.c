@@ -18,7 +18,6 @@ P2.6  UCA1RXD
 September 2018
  */
 # define PERIOD 10000 //Samping period. 10000 count is approximately 1 second; maximum is 65535
-# define HEATER 20000 //Pulse heater at reset. 20000 count is approximately 2 seconds
 
 void SetTimer(void);
 void SetVLO(void);
